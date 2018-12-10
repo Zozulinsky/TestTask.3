@@ -20,11 +20,7 @@ class ProductFragment: MoxyFragment(), ProductView{
 
     companion object {
         private const val KEY_ORDER: String = "productmodel"
-        fun getInstance(productModel: ProductModel): ProductFragment = ProductFragment().also {
-            it.arguments = Bundle().apply {
-                putParcelable(KEY_ORDER, productModel)
-            }
-        }
+        fun getInstance(): ProductFragment = ProductFragment()
     }
     override val layout: Int = R.layout.fragment_products
 
@@ -48,7 +44,7 @@ class ProductFragment: MoxyFragment(), ProductView{
         products_list.layoutManager = LinearLayoutManager(context)
         productAdapter.listener = object : ProductAdapter.OnItemClickListener{
             override fun onItemClick(productModel: ProductModel) {
-                presenter.onProduct(productModel)
+                //presenter.onProduct(productModel)
             }
         }
     }

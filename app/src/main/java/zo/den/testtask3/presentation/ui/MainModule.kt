@@ -25,4 +25,5 @@ class MainModule {
     @MainQualifier
     fun provideNavigator(mainActivity: MainActivity): Navigator =
             SupportAppNavigator(mainActivity, container)
+
 }

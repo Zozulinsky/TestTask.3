@@ -5,9 +5,9 @@ import zo.den.testtask3.presentation.model.ProductModel
 import zo.den.testtask3.presentation.ui.product.ProductScreen
 
 object ScreenFactory {
-    fun getProductScreen(productModel: ProductModel): SupportAppScreen
+    fun getProductScreen(): SupportAppScreen
     {
-        return ProductScreen(productModel)
+        return ProductScreen()
     }
 
 

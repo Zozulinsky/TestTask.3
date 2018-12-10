@@ -11,9 +11,4 @@ class ProductModule {
     @Provides
     @ProductQualifier
     fun provideProductAdapter() : ProductAdapter = ProductAdapter()
-
-    @Provides
-    @ProductQualifier
-    fun provideDetails(productFragment: ProductFragment): ProductModel = productFragment.getProductModel()
-
 }

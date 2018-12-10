@@ -13,23 +13,21 @@ import zo.den.testtask3.presentation.ui.MainQualifier
 import javax.inject.Inject
 
 @InjectViewState
-class ProductPresenter @Inject constructor(): MoxyPresenter<ProductView>() {
+class ProductPresenter @Inject constructor() : MoxyPresenter<ProductView>() {
     @field:Inject
     lateinit var productDao: ProductDao
 
     @field:Inject
     lateinit var imageDao: ImageDao
 
-    @Inject
-    @field:ProductQualifier
-    lateinit var productModel: ProductModel
 
     @Inject
     @field:MainQualifier
     lateinit var router: Router
 
-    override fun onFirstViewAttach(){
+    override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        var list: MutableList<ProductModel>? = null
         productDao.getProducts()
                 .map(ProductModelMapper())
                 .toList()
@@ -37,20 +35,23 @@ class ProductPresenter @Inject constructor(): MoxyPresenter<ProductView>() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     viewState.showProductList(it)
-                },{
+                    list?.addAll(it)
+                }, {
                     it.printStackTrace()
                 }).toCompositeDisposable()
+        if (list != null) {
+            for (productModel: ProductModel in list) {
+                imageDao.getImage(productModel.image)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe({
 
-        imageDao.getImage(productModel.image)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    viewState.inputPhoto(it)
-                },{it.printStackTrace()}).toCompositeDisposable()
+                        }, { it.printStackTrace() }).toCompositeDisposable()
+            }
+        }
 
-    }
-
-    fun onProduct(productModel: ProductModel) {
-        //TODO добавить функционал открытия карты
+        fun onProduct(productModel: ProductModel) {
+            //TODO добавить функционал открытия карты
+        }
     }
 }
