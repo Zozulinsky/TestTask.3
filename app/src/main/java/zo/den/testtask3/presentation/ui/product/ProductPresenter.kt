@@ -27,7 +27,6 @@ class ProductPresenter @Inject constructor() : MoxyPresenter<ProductView>() {
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        var list: MutableList<ProductModel>? = null
         productDao.getProducts()
                 .map(ProductModelMapper())
                 .toList()
@@ -35,23 +34,20 @@ class ProductPresenter @Inject constructor() : MoxyPresenter<ProductView>() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     viewState.showProductList(it)
-                    list?.addAll(it)
+                    for (productModel: ProductModel in it) {
+                        imageDao.getImage(productModel.image)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe({
+                                    viewState.inputPhoto(it)
+                                }, { it.printStackTrace() }).toCompositeDisposable()
+                    }
                 }, {
                     it.printStackTrace()
                 }).toCompositeDisposable()
-        if (list != null) {
-            for (productModel: ProductModel in list) {
-                imageDao.getImage(productModel.image)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({
-
-                        }, { it.printStackTrace() }).toCompositeDisposable()
-            }
         }
 
         fun onProduct(productModel: ProductModel) {
             //TODO добавить функционал открытия карты
         }
     }
-}

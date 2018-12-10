@@ -56,10 +56,4 @@ class ProductFragment: MoxyFragment(), ProductView{
     override fun inputPhoto(bitmap: Bitmap) {
         image.setImageBitmap(bitmap)
     }
-
-    fun getProductModel(): ProductModel {
-        //TODO исправить !!
-        var productModel: ProductModel = this.arguments!!.getParcelable(KEY_ORDER)
-        return productModel
-    }
 }
