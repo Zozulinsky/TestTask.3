@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Товары</string>
+    <string name="id"><b>ID: </b></string>
+    <string name="name"><b>Наименование: </b></string>
+    <string name="price"><b>Цена: </b></string>
+    <string name="city"><b>Город: </b></string>
+    <string name="isFavorite"><b>В избранном: </b></string>
+    <string name="photo"><b>Фото: </b></string>
+
+</resources>
