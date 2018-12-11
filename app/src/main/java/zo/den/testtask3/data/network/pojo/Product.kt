@@ -31,9 +31,9 @@ class Product {
     var description: String? = null
     @SerializedName("latitude")
     @Expose
-    var latitude: String? = null
+    var latitude: String = ""
     @SerializedName("longitude")
     @Expose
-    var longitude: String? = null
+    var longitude: String = ""
 
 }

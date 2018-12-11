@@ -12,7 +12,9 @@ class ProductModelMapper:Function<Product, ProductModel> {
         val price: Int? = t.price
         val city: String? = t.city
         val isFavorite: Boolean? = t.isFavorite
+        val latitude: String = t.latitude
+        val longitude: String = t.longitude
 
-        return ProductModel(id, name, image, price, city, isFavorite)
+        return ProductModel(id, name, image, price, city, isFavorite, latitude,longitude)
     }
 }

@@ -6,14 +6,14 @@ import io.reactivex.Single
 import zo.den.testtask3.data.dao.ImageDao
 import zo.den.testtask3.data.network.api.ProductApi
 import javax.inject.Inject
-
+/*
 class ImageDaoImpl @Inject constructor() : ImageDao {
 
     var bitmapLruCache: LruCache<String, Bitmap>? = null
     @Inject
     lateinit var productApi: ProductApi
 
-    override fun getImage(path: String): Single<Bitmap> {
+    /*override fun getImage(path: String): Single<Bitmap> {
         val bmp = bitmapLruCache?.get(path)
         return if(bmp==null || bmp.isRecycled){
             productApi.getImage(path).doOnSuccess {
@@ -21,5 +21,5 @@ class ImageDaoImpl @Inject constructor() : ImageDao {
             }
         }else
             Single.just(bmp)
-    }
-}
+    }*/
+}*/

@@ -19,7 +19,6 @@ import javax.inject.Provider
 class ProductFragment: MoxyFragment(), ProductView{
 
     companion object {
-        private const val KEY_ORDER: String = "productmodel"
         fun getInstance(): ProductFragment = ProductFragment()
     }
     override val layout: Int = R.layout.fragment_products
@@ -28,7 +27,7 @@ class ProductFragment: MoxyFragment(), ProductView{
     lateinit var presenterProvider: Provider<ProductPresenter>
 
     @ProvidePresenter
-    fun providePresenter(): ProductPresenter = presenterProvider.get()
+    fun providePresenter() = presenterProvider.get()
 
     @InjectPresenter
     lateinit var presenter: ProductPresenter
@@ -44,7 +43,7 @@ class ProductFragment: MoxyFragment(), ProductView{
         products_list.layoutManager = LinearLayoutManager(context)
         productAdapter.listener = object : ProductAdapter.OnItemClickListener{
             override fun onItemClick(productModel: ProductModel) {
-                //presenter.onProduct(productModel)
+                presenter.onProduct(productModel)
             }
         }
     }
@@ -53,7 +52,4 @@ class ProductFragment: MoxyFragment(), ProductView{
         productAdapter.list = list
     }
 
-    override fun inputPhoto(bitmap: Bitmap) {
-        image.setImageBitmap(bitmap)
-    }
 }
