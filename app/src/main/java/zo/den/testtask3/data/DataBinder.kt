@@ -2,7 +2,6 @@ package zo.den.testtask3.data
 
 import dagger.Binds
 import dagger.Module
-import zo.den.testtask3.data.dao.ImageDao
 import zo.den.testtask3.data.dao.ProductDao
 import zo.den.testtask3.data.dao.impl.ProductDaoImpl
 

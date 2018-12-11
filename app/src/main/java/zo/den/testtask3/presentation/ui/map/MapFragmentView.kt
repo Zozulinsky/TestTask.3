@@ -7,5 +7,5 @@ import zo.den.testtask3.presentation.model.ProductModel
 
 interface MapFragmentView : BaseView{
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun showMap(latitude: ProductModel)
+    fun showMap(latitude: Double, longitude: Double)
 }

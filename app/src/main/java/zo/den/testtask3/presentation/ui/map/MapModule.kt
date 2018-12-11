@@ -8,5 +8,5 @@ import zo.den.testtask3.presentation.model.ProductModel
 class MapModule {
     @Provides
     @MapQualifier
-    fun provideGeoData(mapFragment: MapFragment) : ProductModel = mapFragment.getProductModel()
+    fun provideGeoData(mapFragment: MapFragment) : DoubleArray = mapFragment.getData()
 }

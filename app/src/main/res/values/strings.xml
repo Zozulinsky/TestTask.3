@@ -6,5 +6,6 @@
     <string name="city"><b>Город: </b></string>
     <string name="isFavorite"><b>В избранном: </b></string>
     <string name="photo"><b>Фото: </b></string>
+    <string name="getpermission"><b>Необходимо разрешить сохранять данные </b></string>
 
 </resources>

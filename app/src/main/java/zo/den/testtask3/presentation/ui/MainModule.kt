@@ -2,6 +2,7 @@ package zo.den.testtask3.presentation.ui
 
 import dagger.Module
 import dagger.Provides
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -24,6 +25,6 @@ class MainModule {
     @Provides
     @MainQualifier
     fun provideNavigator(mainActivity: MainActivity): Navigator =
-            SupportAppNavigator(mainActivity, container)
+            SupportAppNavigator(mainActivity, mainActivity.containerId)
 
 }

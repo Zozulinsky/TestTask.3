@@ -12,10 +12,14 @@ class MapPresenter @Inject constructor() : MoxyPresenter<MapFragmentView>() {
 
     @Inject
     @field:MapQualifier
-    lateinit var productModel: ProductModel
+    lateinit var geoData: DoubleArray
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        viewState.showMap(productModel)
+        val latitude = geoData[0]
+        val longitude = geoData[1]
+        if (latitude != null && longitude != null) {
+            viewState.showMap(latitude, longitude)
+        }
     }
 }

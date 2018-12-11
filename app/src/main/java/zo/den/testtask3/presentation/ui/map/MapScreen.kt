@@ -2,12 +2,10 @@ package zo.den.testtask3.presentation.ui.map
 
 import android.support.v4.app.Fragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
-import zo.den.testtask3.presentation.model.ProductModel
-import zo.den.testtask3.presentation.ui.product.ProductFragment
 
-class MapScreen(var productModel: ProductModel): SupportAppScreen(){
+class MapScreen(var latitude: Double, var longitude: Double): SupportAppScreen(){
     override fun getFragment(): Fragment {
-        return MapFragment.getInstance(productModel)
+        return MapFragment.getInstance(latitude, longitude)
     }
 
     override fun getScreenKey(): String {

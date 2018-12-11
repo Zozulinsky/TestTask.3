@@ -2,7 +2,6 @@ package zo.den.testtask3.data.network.service
 
 import io.reactivex.Single
 import retrofit2.http.GET
-import retrofit2.http.Url
 import zo.den.testtask3.data.network.pojo.Product
 
 interface ProductService {

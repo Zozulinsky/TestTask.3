@@ -13,6 +13,6 @@ data class ProductModel(
         val price: Int?,
         val city: String?,
         val isFavorite: Boolean?,
-        var latitude: String,
-        var longitude: String
+        var latitude: Double?,
+        var longitude: Double?
 ) : Parcelable

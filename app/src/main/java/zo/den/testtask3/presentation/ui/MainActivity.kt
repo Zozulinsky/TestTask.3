@@ -28,7 +28,7 @@ class MainActivity()  :  DiMoxyActivity(), MainView {
     @InjectPresenter
     lateinit var presenter: MainPresenter
 
-    constructor(parcel: Parcel) : this()
+
 
     @ProvidePresenter
     fun providePresenter(): MainPresenter = presenterProvider.get()

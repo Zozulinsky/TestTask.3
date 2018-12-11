@@ -4,6 +4,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.product.*
 import kotlinx.android.synthetic.main.product.view.*
 import zo.den.testtask3.R
 import zo.den.testtask3.presentation.model.ProductModel
@@ -39,12 +41,21 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() 
             itemView.name.text = productModel.name
             itemView.price.text = productModel.price.toString()
             itemView.city.text = productModel.city
-            if (productModel.isFavorite==true)
-                itemView.isFavorite.text = "Да"
-            else
-                itemView.isFavorite.text = "Нет"
+            Picasso
+                    .get()
+                    .load(productModel.image)
+                    .placeholder(R.drawable.outline_cached_black_18dp)
+                    .error(R.drawable.baseline_error_black_18)
+                    .into(itemView.imageProduct)
+            val isFavorite: Boolean? = productModel.isFavorite
+            if (isFavorite != null) {
+                itemView.isFavorite.setChecked(isFavorite)
+            }
             itemView.setOnClickListener(View.OnClickListener {
-                listener?.onItemClick(productModel)
+                val latitude = productModel.latitude
+                val longitude = productModel.longitude
+                if (latitude != null && longitude != null)
+                    listener?.onItemClick(productModel)
             })
         }
     }

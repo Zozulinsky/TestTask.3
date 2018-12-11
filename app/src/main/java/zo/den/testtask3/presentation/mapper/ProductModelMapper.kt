@@ -14,7 +14,7 @@ class ProductModelMapper:Function<Product, ProductModel> {
         val isFavorite: Boolean? = t.isFavorite
         val latitude: String = t.latitude
         val longitude: String = t.longitude
-
-        return ProductModel(id, name, image, price, city, isFavorite, latitude,longitude)
+        //TODO координаты null обработать в productfragment и избавиться от передачи целой модели в map fragment
+        return ProductModel(id, name, image, price, city, isFavorite, latitude.toDoubleOrNull(),longitude.toDoubleOrNull())
     }
 }
